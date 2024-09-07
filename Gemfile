@@ -17,8 +17,8 @@ group :test do
 end
 
 group :development do
-  gem 'rubocop', '~> 1.66.1'
-  gem 'rubocop-factory_bot', '~> 2.26', '>= 2.26.1'
-  gem 'rubocop-rake', '~> 0.6.0'
-  gem 'rubocop-rspec', '~> 3.0', '>= 3.0.4'
+  gem 'rubocop', '~> 1.66.1', require: false
+  gem 'rubocop-factory_bot', '~> 2.26', '>= 2.26.1', require: false
+  gem 'rubocop-rake', '~> 0.6.0', require: false
+  gem 'rubocop-rspec', '~> 3.0', '>= 3.0.4', require: false
 end
