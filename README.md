@@ -80,6 +80,36 @@ AvailabilityScheduler::Appointment.create!(
 )
 ```
 
+### Fetching Availability for a User
+
+You can fetch the availability of a user for a given month using the `AvailabilityScheduler::Availability::FetchForUser` service. This service returns a hash where each day of the month is mapped to an array of availability time periods.
+
+#### Example
+
+```ruby
+availability_service = AvailabilityScheduler::Availability::FetchForUser.new(user_id: 1, date: '05-2024')
+availability = availability_service.call
+
+availability.each do |date, periods|
+  if periods.any?
+    periods.each do |period|
+      puts "#{date}: Available from #{period[:start_time]} to #{period[:end_time]}"
+    end
+  else
+    puts "#{date}: Not available"
+  end
+end
+```
+Example output:
+```ruby
+{
+  "2024-05-01" => [{ start_time: "09:00", end_time: "10:00" }, { start_time: "11:00", end_time: "16:00" }],
+  "2024-05-02" => [],
+  "2024-05-03" => [{ start_time: "10:00", end_time: "14:00" }],
+  # ...
+}
+```
+
 ### Validation Example
 
 The gem will automatically validate whether the appointment is within the availability and if it overlaps with any other appointments.

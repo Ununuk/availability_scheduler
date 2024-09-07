@@ -7,4 +7,5 @@ module AvailabilityScheduler
   autoload :WeeklySchedule, 'availability_scheduler/models/weekly_schedule'
   autoload :SpecialSchedule, 'availability_scheduler/models/special_schedule'
   autoload :Appointment, 'availability_scheduler/models/appointment'
+  autoload :Availability, 'availability_scheduler/services/availability/fetch_for_user'
 end
